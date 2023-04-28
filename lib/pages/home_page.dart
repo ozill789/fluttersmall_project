@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/welcome/apptext.dart';
 
 import '../welcome/apptextbold.dart';
 
@@ -10,6 +11,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+  var iconbutton = {
+    'kayaking.jpg': 'Kayaking',
+    'snarkeling.jpg': 'Snarkeling',
+    'balloning.jpg': 'Balloning',
+    'hiking.jpg': 'Hiking',
+  };
+
   @override
   Widget build(BuildContext context) {
     TabController tabcontroller = TabController(length: 3, vsync: this);
@@ -43,16 +51,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         const SizedBox(
           height: 40,
         ),
+
         Container(
-            margin: const EdgeInsets.only(right: 250),
-            child: AppTextBold(
-              color: Colors.black,
-              size: 30,
-              text: 'Discover',
-            )),
+          margin: const EdgeInsets.only(right: 270),
+          child: AppTextBold(size: 27, color: Colors.black, text: 'Discover'),
+        ),
         const SizedBox(
           height: 30,
         ),
+
         Align(
           alignment: Alignment.centerLeft,
           child: TabBar(
@@ -61,7 +68,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               unselectedLabelColor: Colors.grey,
               controller: tabcontroller,
               isScrollable: true,
-              indicator: CircleTabIndicator(radius: 4, color: Colors.red),
+              indicator: CircleTabIndicator(
+                  radius: 4, color: const Color.fromARGB(255, 97, 175, 239)),
               tabs: const [
                 Text(
                   'Places',
@@ -79,22 +87,81 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ),
         SizedBox(
           width: double.infinity,
-          height: 200,
-          child: TabBarView(controller: tabcontroller, children: const [
-            Text(
+          height: 350,
+          child: TabBarView(controller: tabcontroller, children: [
+            ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 3,
+                itemBuilder: (_, index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 10, right: 10),
+                      width: 230,
+                      height: 350,
+                      decoration: BoxDecoration(
+                        image: const DecorationImage(
+                            image: AssetImage('images/mount2.jpg'),
+                            fit: BoxFit.cover),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                  );
+                }),
+            const Text(
               'hello',
               style: TextStyle(color: Colors.black),
             ),
-            Text(
-              'hello',
-              style: TextStyle(color: Colors.black),
-            ),
-            Text(
+            const Text(
               'hello',
               style: TextStyle(color: Colors.black),
             ),
           ]),
-        )
+        ),
+        const SizedBox(
+          height: 30,
+        ),
+        Container(
+          margin: const EdgeInsets.only(left: 20, right: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              AppTextBold(size: 20, color: Colors.black, text: 'Explore more'),
+              AppText(size: 18, color: Colors.black, text: 'See all')
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 30,
+        ),
+        SizedBox(
+            width: double.infinity,
+            height: 130,
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 4,
+                itemBuilder: (_, index) {
+                  return Container(
+                    margin: const EdgeInsets.only(left: 30),
+                    child: Column(
+                      children: [
+                        Container(
+                          width: 80,
+                          height: 80,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              image: DecorationImage(
+                                  image: AssetImage('images/' +
+                                      iconbutton.keys.elementAt(index)))),
+                        ),
+                        AppText(
+                            size: 15,
+                            color: Colors.black,
+                            text: iconbutton.values.elementAt(index))
+                      ],
+                    ),
+                  );
+                }))
       ],
     ));
   }
@@ -119,7 +186,7 @@ class _CirclePainter extends BoxPainter {
 
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
-  Paint paint = Paint();
+    Paint paint = Paint();
     paint.color = color;
     paint.isAntiAlias = true;
     final Offset circleOffset = Offset(
