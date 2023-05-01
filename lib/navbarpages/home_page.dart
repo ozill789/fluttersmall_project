@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/welcome/apptext.dart';
+import 'package:flutter_application_1/widget/apptext.dart';
 
-import '../welcome/apptextbold.dart';
+import '../widget/apptextbold.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,9 +13,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   var iconbutton = {
     'kayaking.jpg': 'Kayaking',
+    'balloning.png': 'Balloning',
+    'hiking.png': 'Hiking',
     'snarkeling.jpg': 'Snarkeling',
-    'balloning.jpg': 'Balloning',
-    'hiking.jpg': 'Hiking',
   };
 
   @override
@@ -91,7 +91,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           child: TabBarView(controller: tabcontroller, children: [
             ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: 3,
+                itemCount: iconbutton.length,
                 itemBuilder: (_, index) {
                   return Padding(
                     padding: const EdgeInsets.only(top: 20),
@@ -139,20 +139,21 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             height: 130,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: 4,
+                itemCount: iconbutton.length,
                 itemBuilder: (_, index) {
                   return Container(
                     margin: const EdgeInsets.only(left: 30),
                     child: Column(
                       children: [
                         Container(
-                          width: 80,
-                          height: 80,
+                          width: 70,
+                          height: 70,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
                               image: DecorationImage(
-                                  image: AssetImage('images/' +
-                                      iconbutton.keys.elementAt(index)))),
+                                  image: AssetImage(
+                                      'images/${iconbutton.keys.elementAt(index)}'),
+                                  fit: BoxFit.cover)),
                         ),
                         AppText(
                             size: 15,

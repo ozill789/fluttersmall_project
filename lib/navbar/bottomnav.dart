@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/bar_page.dart';
-import 'package:flutter_application_1/pages/home_page.dart';
-import 'package:flutter_application_1/pages/person_page.dart';
-import 'package:flutter_application_1/pages/search_page.dart';
+import 'package:flutter_application_1/navbarpages/bar_page.dart';
+import 'package:flutter_application_1/navbarpages/home_page.dart';
+import 'package:flutter_application_1/navbarpages/person_page.dart';
+import 'package:flutter_application_1/navbarpages/search_page.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({super.key});

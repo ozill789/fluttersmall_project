@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/welcome/responsive_button.dart';
+import 'package:flutter_application_1/widget/responsive_button.dart';
 
-import '../welcome/apptext.dart';
-import '../welcome/apptextbold.dart';
+import 'apptext.dart';
+import 'apptextbold.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -70,7 +70,9 @@ class WelcomePage extends StatelessWidget {
                           height: 20,
                         ),
                         ResponsiveButton(
-                          width: 80,
+                          width: 100,
+                          height: 50,
+                          size: 17,
                         )
                       ],
                     ),
