@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/detailpages/placemount1_detail.dart';
-import 'package:flutter_application_1/widget/welcome_page.dart';
 
 void main() {
   runApp(const MyApp());
